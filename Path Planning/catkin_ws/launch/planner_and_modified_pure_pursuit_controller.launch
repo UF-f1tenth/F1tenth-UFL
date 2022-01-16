@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<launch>
+    
+    <arg name="window_size_" default="8"/>
+    <arg name="beta_max_" default="15"/>
+    <arg name="alpha_max_" default="0.5"/>
+    <arg name="path_planner" default="A_star"/>
+
+    <!--Loading parameters-->
+    <param name="window_size_" value="$(arg window_size_)"/>
+    <param name="beta_max_" value="$(arg beta_max_)"/>
+    <param name="alpha_max_" value="$(arg alpha_max_)"/>
+    <param name="lookahead_distance_" value="0.9"/>
+    <param name="slowest_speed_" value="2"/>
+    <param name="mid_speed_" value="3"/>
+    <param name="max_speed_" value="4"/>
+
+
+    <node name="modified_pure_pursuit_controller_node" pkg="modified_pure_pursuit_controller" type="modified_pure_pursuit_controller_node" output="screen"/>
+    <!--<node name="pure_pursuit_controller_node_with_lingering_lookahead_point" pkg="pure_pursuit_controller" type="pure_pursuit_controller_node_with_lingering_lookahead_point" output="screen"/>-->
+    
+    <group if="$(eval arg('path_planner') == 'dijkstra')">
+        <param name="planner_topic" value="/dijkstra_shortest_path"/>
+        <node pkg="motion_planning_dijkstra" type="motion_planning_dijkstra_node" name="motion_planning_dijkstra_node" output="screen"/>
+    </group>
+
+    <group if="$(eval arg('path_planner') == 'A_star')">
+        <param name="planner_topic" value="/A_star_shortest_path"/>
+        <node name="motion_planning_A_star_node" pkg="motion_planning_A_star" type="motion_planning_A_star_node" output="screen"/>
+    </group>
+
+    <group if="$(eval arg('path_planner') == 'RRT')">
+        <param name="planner_topic" value="/rrt_path"/>
+        <node pkg="motion_planning_RRT" type="motion_planning_RRT_node" name="motion_planning_RRT_node" output="screen"/>
+    </group>
+
+    <group if="$(eval arg('path_planner') == 'RRT_star')">
+        <param name="planner_topic" value="/rrt_star_path"/>
+        <node pkg="motion_planning_RRT_star" type="motion_planning_RRT_star_node" name="motion_planning_RRT_star_node" output="screen"/>
+    </group>
+</launch>
