@@ -11,13 +11,13 @@ The code consists of using ZED camera api in c++. All the required documentation
 To get higher frame rate, multi-processing with shared memory between processes to transfer image data is used. Camera data is written in an assigned memory by a node (C++) and another node (Python with utilizing a module created from C++ using pybind11) contains the object detection pipeline (pytorch).
 
 <p align = "center">
-<img src="images/1.png" width="300" height="300">
+<img src="images/1.png" width="720" height="300">
 </p>
 <p align = "center">
 </p>
 
 <p align = "center">
-<img src="images/2.png" width="300" height="300">
+<img src="images/2.png" width="720" height="300">
 </p>
 <p align = "center">
 </p>
