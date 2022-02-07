@@ -8,7 +8,7 @@ Currently consists the implementation of the following algorithms.
 
 The code consists of using ZED camera api in c++. All the required documentation can be found here https://www.stereolabs.com/zed/.
 
-To get higher frame rate, multi-processing with shared memory between processes to transfer image data is used. Camera data is written in an assigned memory by a node (C++) and another node (Python with utilizing a module created from C++ using pybind11) contains the object detection pipeline (pytorch).
+To get higher frame rate, multi-processing with shared memory between processes to transfer image data is used. Camera data is written to an assigned memory by a node (C++) and another node (Python with utilizing a module created from C++ using pybind11) contains the object detection pipeline (pytorch).
 
 <p align = "center">
 <img src="images/1.png" width="720" height="480">
