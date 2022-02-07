@@ -1,5 +1,7 @@
 # Object detection.
 
+Download the catkin_ws and run real_world_wall_following_cam launch file in a standard way done for ROS. Note: may have to delete /build and /devel present in the workspace and build it again.
+
 Currently consists the implementation of the following algorithms.   
 
 1. YOLOv3
